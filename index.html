@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="index.css">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Aviatur test</title>
+</head>
+<body  style="background-color:#e0ddddfb">
+
+  <nav class="navbar-expand-lg" style="background-color: #2a0dac">
+    <a class="navbar-brand pb-2 pt-0" href="#">
+        <img src="assets/images/logo-aviatur.svg" width="120" height="20" alt="">
+      </a>
+</nav>
+<div id="app">
+  <div class="container">
+    <div class="row">
+      <div class="flex-body">
+        <div class="flex-row">
+          <span class ="text-muted filtrosClass pl-3"> Filtros</span>
+          <div class="card-01 collapse-toggle">
+                    <ul class="list-group list-group-flush collapse-toggle" id="filterCollapse">
+                        <li class="list-group-item">
+                            <i class="fas fa-search"></i>
+                            <span>Nombre del Hotel</span>
+                        </li>
+                        <li class="list-group-item py-5 ">
+                            <i class="fas fa-bed"></i>
+                            <input class="inputClass" placeholder="Hotel" id="hotelName"/>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-star blackStar"></i>
+                            &nbsp <span> Estrellas</span>
+                        </li>
+                        <li class="list-group-item mb-8">
+                            <i class="fas fa-check mt-4"></i>
+                            <span class ="text-muted">Todas las Estrellas</span>
+                            <br/>
+                            <label>
+                                <input type="checkbox"  class="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-star"></i>
+                            <br/>
+                            <label>
+                                <input type="checkbox"  class="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <br/>
+                            <label>
+                                <input type="checkbox"  class="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <br/>
+                            <label>
+                                <input type="checkbox"  class="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <br/>
+                            <label>
+                                <input type="checkbox" class="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </li>
+                    </ul>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="card-02" v-for="hotel in hotels">
+            <div class="container">
+              <div class="row">
+                  <div class="col-12">
+                      <img v-bind:src="'assets/images/hotels/'+hotel.image" class="responsive"/>
+                  </div>
+                  <div class="col-12">
+                      <h5 class="hotelName">{{hotel.name}}</h5>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <br/>
+                      <img src="../assets/icons/amenities/safety-box.svg" class="icon"/>
+                      <img src="../assets/icons/amenities/nightclub.svg" class="icon"/>
+                      <img src="../assets/icons/amenities/bathtub.svg" class="icon"/>
+                      <img src="../assets/icons/amenities/beach.svg" class="icon"/>
+                      <img src="../assets/icons/amenities/business-center.svg" class="icon"/>
+                  </div>
+                  <hr>
+                  <div class ="col-12 thirdCol">
+                      <span class ="text-muted priceClass d-flex align-items-center">Precio por noche por habitación</span>
+                      <br/>
+                      <h6 class="price d-flex align-items-center ">ARS&nbsp<strong>{{hotel.price}}</strong></h6>
+                      <button type="button" class="btn btn-style d-flex align-items-center"  v-on:click="clickEnBoton">VER HOTEL</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(window).on('resize', function(){
+    var windowSize = $(window).width();
+    if(windowSize < 480) {
+        $('#filterCollapse').collapse('hide');
+    } else {
+        $('#filterCollapse').collapse('show');
+    }
+  });
+  
+
+
+    var app = new Vue({
+      el: '#app',
+            data: {
+              search:'',
+                message: 'Hello Vue!',
+                name:"Yared",
+                seen:false,
+                elementos: [
+                    { texto: 'Learn JavaScript' },
+                    { texto: 'Learn Vue' },
+                    { texto: 'Build something awesome' }
+                ],
+            hotels: [
+              {
+                  "id": "161914",
+                  "name": "NM Lima Hotel",
+                  "stars": 4,
+                  "price": 1445.5,
+                  "image": "981018_26_b.jpg",
+                  "amenities": [
+                  "business-center",
+                  "nightclub",
+                  "deep-soaking-bathtub",
+                  "fitness-center",
+                  "garden"
+                  ]
+              },
+              {
+                "id": "93911",
+                "name": "El Condado Miraflores Hotel & Suites",
+                "stars": 3,
+                "price": 1374.56,
+                "image": "9291429_9_b.jpg",
+                "amenities": [
+                  "coffe-maker",
+                  "restaurant",
+                  "bathtub",
+                  "beach-pool-facilities",
+                  "separate-bredroom"
+                ]
+              },
+              {
+                "id": "132931",
+                "name": "Suites del Bosque Hotel",
+                "stars": 3,
+                "price": 1647.73,
+                "image": "1574025_73_b.jpg",
+                "amenities": [
+                  "beach-pool-facilities",
+                  "newspaper",
+                  "separate-bredroom",
+                  "safety-box",
+                  "garden"
+                ]
+              },
+              {
+                "id": "132930",
+                "name": "Leon de Oro Inn & Suites",
+                "stars": 3,
+                "price": 1128,
+                "image": "6975518_43_b.jpg",
+                "amenities": [
+                  "nightclub",
+                  "business-center",
+                  "safety-box",
+                  "deep-soaking-bathtub",
+                  "garden"
+                ]
+              },
+              {
+                "id": "161892",
+                "name": "Sonesta Posadas del Inca Miraflores - Lima",
+                "stars": 3,
+                "price": 1485.63,
+                "image": "44e00399_b.jpg",
+                "amenities": [
+                  "garden",
+                  "restaurant",
+                  "beach",
+                  "deep-soaking-bathtub",
+                  "bathtub"
+                ]
+              },
+              {
+                "id": "161891",
+                "name": "B&B Tradiciones",
+                "stars": 3,
+                "price": 801.45,
+                "image": "893882_7_b.jpg",
+                "amenities": [
+                  "newspaper",
+                  "coffe-maker",
+                  "safety-box",
+                  "beach-pool-facilities",
+                  "nightclub"
+                ]
+              },
+              {
+                "id": "132937",
+                "name": "Maria Angola Hotel & Centro de Convenciones",
+                "stars": 3,
+                "price": 1131.76,
+                "image": "23645_15_b.jpg",
+                "amenities": [
+                  "garden",
+                  "restaurant",
+                  "children-club",
+                  "separate-bredroom",
+                  "deep-soaking-bathtub"
+                ]
+              },
+              {
+                "id": "132936",
+                "name": "Hotel Continental",
+                "stars": 3,
+                "price": 774.53,
+                "image": "802720_60_b.jpg",
+                "amenities": [
+                  "deep-soaking-bathtub",
+                  "coffe-maker",
+                  "newspaper",
+                  "beach",
+                  "children-club"
+                ]
+              }
+            ]
+        },
+        methods: {
+          clickEnBoton: function () {
+            console.log(":D")
+          }
+        },
+        computed: {
+          filteredList() {
+            return this.hotels.filter(hotel => {
+              return hotel.name.toLowerCase().includes(this.search.toLowerCase())
+            })
+          }
+        }
+    })
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+</html>

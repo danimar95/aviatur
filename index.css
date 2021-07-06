@@ -1,0 +1,159 @@
+.row{
+  flex-direction: row;
+}
+
+.flex-row {
+  flex-direction: row;
+  margin:0%
+}
+.flex-column {
+  flex-direction: column;
+  display: flex;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 490px;
+}
+
+.flex-body {
+  display: flex;
+  width:fit-content;
+}
+
+.flex-body div:not([class*="flex"]) {
+  margin: 10px;
+  flex: 1 1 200px;
+  height: auto;
+  padding: 0;
+  width: auto;
+  
+}
+
+.card-01 {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  flex:1;
+  max-width: 300px;
+  height: 300px;
+  box-shadow: 0 0 5px rgba 0 0 0 0.2;
+}
+
+.card-02 {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  flex:1;
+  max-width: auto;
+  height: 470px;
+  box-shadow: 0 0 5px rgba 0 0 0 0.2;
+}
+
+.body {
+  background-color: rgb(226, 226, 226)!important;
+  overflow-x: hidden;
+}
+
+.filtros{
+  background-color: #e0ddddfb;
+}
+
+.icon{
+  height: 15px;
+  width: 15px;
+  margin-right: 1%;
+}
+
+img.responsive{
+    width: 100%;
+    height: auto;
+    display: block;
+
+}
+
+.hotelName{
+  color:rgb(62, 91, 218);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fas.fa-star{
+  color: rgb(238, 238, 43);
+}
+
+.fas.fa-star.blackStar{
+  color: black;
+}
+
+
+.col-3 .priceClass{ 
+  font-size: 12px;
+}
+
+.price{
+  font-size: 25px;
+  font-weight:200;
+  color: rgb(255, 196, 0);
+}
+
+hr{
+    border:none;
+    border-left:1px solid hsla(200, 10%, 50%,100);
+    height:170px;
+    width:1px;       
+}
+
+.col-3.thirdCol{
+  padding: 4px 25px 20px 20px !important;
+}
+
+.btn-style{
+  background-color:#2a0dac;
+  color: white;
+  font-size: 13px;
+  margin-left: 20px;
+}
+
+input.inputClass{
+    border:none;
+    border-bottom: 1px solid;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.fas.fa-check{
+  color:#2a0dac;
+}
+
+.navbar-brand{
+  padding-left:80px
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-brand {
+    align-content: center;
+  }
+
+  .flex-column {
+    flex-direction: row;
+    
+  }
+  .flex-body {
+   flex-direction: column;
+  }
+
+.card-01{
+  -webkit-margin-collapse: collapse;
+}
+
+hr{
+     background: black; 
+     width: 80%; 
+     height: 1px;
+}
+.navbar-brand{
+  padding-left:110px
+}
+
+.flex-column {
+  height: 510px;
+}
+}
